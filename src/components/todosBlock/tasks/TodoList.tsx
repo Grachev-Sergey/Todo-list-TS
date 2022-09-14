@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import filteredTodos from '../../../redux/selectors';
 import { StoreType } from '../../../redux/store';
-import styles from './todoList.module.css';
+import { TodoListContainer } from './todoListStyles';
 import TodoElem from './todoElem/TodoElem';
 
 
@@ -11,7 +11,7 @@ function TodoList() {
   const todos = filteredTodos(state);
 
   return (
-    <ul className={styles.todoList}>
+    <TodoListContainer>
       {
         todos.map(todo => (
           <TodoElem
@@ -22,7 +22,7 @@ function TodoList() {
           />
         ))
       }
-    </ul>
+    </TodoListContainer>
   );
 };
 

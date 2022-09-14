@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask, changingArrow } from '../../../redux/taskSlice';
-import styles from './inputField.module.css';
+import { InputFieldContainer } from './stylesInputField'
 import arrow from '../../../imgs/arrowDown.png';
 
 function InputField() {
@@ -26,27 +26,27 @@ function InputField() {
   };
 
   return (
-    <div>
+    <InputFieldContainer>
       <button
-        className={styles.button}
+        className="button"
         onClick={changingStateArrow}
       >
         <img
           src={arrow}
           alt="arrow"
-          className={styles.img}
+          className="img"
         />
       </button>
       <form onSubmit={createTodoElem}>
         <input
           type="text"
-          className={styles.input}
+          className="input"
           placeholder="What needs to be done?"
           value={text}
           onChange={changeText}
         />
       </form>
-    </div>
+    </InputFieldContainer>
   );
 }
 

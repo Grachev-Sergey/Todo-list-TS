@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { leaveActiveTasks } from '../../../redux/taskSlice';
 import { StoreType } from '../../../redux/store';
-import styles from './filtersAndCounter.module.css';
+import { Footer } from './filtersAmdCounterStyles'
 import Filters from './filters/Filters';
 
 function FiltersAndCounter () {
@@ -14,20 +14,20 @@ function FiltersAndCounter () {
   let numActiveTodos = todos.filter(todo => !todo.complited);
 
   return (
-    <div className={styles.footer}>
-      <span className={styles.counter}>
+    <Footer>
+      <span className="counter">
         {numActiveTodos.length}
         {numActiveTodos.length === 1 ? ' item ' : ' items '}
         left
       </span>
       <Filters/>
       <button
-        className={styles.button}
+        className="button"
         onClick={clearComplited}
       >
         Clear complited
       </button>
-    </div>
+    </Footer>
   );
 };
 

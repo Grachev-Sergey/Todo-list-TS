@@ -1,15 +1,15 @@
-import styles from './todosBlock.module.css';
+import { TodosContainer } from'./todosBlockStyles';
 import InputField from './inputField/InputField';
 import TodoList from './tasks/TodoList';
 import FiltersAndCounter from './filterBlock/FiltersAndCounter';
 
 function TodosBlock() {
   return (
-    <section className={styles.todoApp}>
+    <TodosContainer>
       <InputField/>
       <TodoList/>
       <FiltersAndCounter/>
-    </section>
+    </TodosContainer>
   );
 };
 

@@ -1,6 +1,8 @@
-.filters {
+import styled from 'styled-components'
+
+export const FiltresContainer = styled.div`
+
   display: flex;
-}
 
 .button {
   border: none;
@@ -29,3 +31,4 @@
 .buttonSelected:not(:last-child){
   margin-right: 15px;
 }
+`

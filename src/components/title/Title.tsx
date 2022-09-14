@@ -1,10 +1,11 @@
-import styles from './title.module.css';
+// import styles from './title.module.css';
+import { TitleContainer } from './titleStyles'
 
 function Title() {
   return (
-    <div className={styles.title}>
+    <TitleContainer>
       todos
-    </div>
+    </TitleContainer>
   );
 }
 

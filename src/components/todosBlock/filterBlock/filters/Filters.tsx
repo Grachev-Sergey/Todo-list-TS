@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from '../../../../redux/taskSlice';
-import styles from './filters.module.css';
+import { FiltresContainer } from './filtersStyle';
 
 function Filters () {
   const [status, setStatus] = useState('');
@@ -29,26 +29,26 @@ function Filters () {
   };
 
   return (
-    <div className={styles.filtres}>
+    <FiltresContainer>
       <button 
-        className={status === 'all' ? styles.buttonSelected : styles.button} 
+        className={status === 'all' ? "buttonSelected" : "button"} 
         onClick={allTodo}
       >
         All
       </button>
       <button 
-        className={status === 'active' ? styles.buttonSelected : styles.button}
+        className={status === 'active' ? "buttonSelected" : "button"}
         onClick={activeTodo}
       >
         Active
       </button>
       <button 
-        className={status === 'completed' ? styles.buttonSelected : styles.button}
+        className={status === 'completed' ? "buttonSelected" : "button"}
         onClick={complitedTodo}
       >
         Complited
       </button>
-    </div>
+    </FiltresContainer>
   );
 };
 

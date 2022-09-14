@@ -1,13 +1,13 @@
-import './app.css';
+import { AppContainer } from './style'
 import Title from './title/Title';
 import TodosBlock from './todosBlock/TodosBlock';
 
 function App() {
   return (
-    <div>
+    <AppContainer>
       <Title />
       <TodosBlock />
-    </div>
+    </AppContainer>
   );
 };
 
