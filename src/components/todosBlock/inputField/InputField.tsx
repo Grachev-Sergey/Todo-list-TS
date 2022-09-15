@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask, changingArrow } from '../../../redux/taskSlice';
-import { InputFieldContainer } from './stylesInputField'
+import { InputFieldContainer } from './inputFieldStyles'
 import arrow from '../../../imgs/arrowDown.png';
 
 function InputField() {

@@ -31,4 +31,9 @@ export const FiltresContainer = styled.div`
 .buttonSelected:not(:last-child){
   margin-right: 15px;
 }
+
+@media only screen and (max-width: 450px) {
+  display: block;
+  margin: 5px auto;
+}
 `

@@ -5,4 +5,6 @@ export const TodosContainer = styled.section`
   background: #f5f5f5;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
   margin: 0 auto;
+  @media only screen and (max-width: 450px) {
+  }
 `

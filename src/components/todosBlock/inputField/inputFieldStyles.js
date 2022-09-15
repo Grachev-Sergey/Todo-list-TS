@@ -40,4 +40,10 @@ export const InputFieldContainer = styled.div`
     color : rgba(175, 47, 47, 0.15);
     font-style: italic;
   }
+
+  @media only screen and (max-width: 450px) {
+    .input {
+      font-size: 20px;
+    }
+  }
 `

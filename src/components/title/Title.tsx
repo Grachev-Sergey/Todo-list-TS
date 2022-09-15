@@ -1,4 +1,3 @@
-// import styles from './title.module.css';
 import { TitleContainer } from './titleStyles'
 
 function Title() {
