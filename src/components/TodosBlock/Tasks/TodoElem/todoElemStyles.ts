@@ -1,12 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const TodoElems = styled.li`
+type StylesProps = {
+  isCompleted: boolean;
+}
+
+export const TodoElems = styled.li<StylesProps>`
 
   position: relative;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.whiteBg};
 
-  .hide {
-    display: none;
+  img {
+    width: 18px;
+    height: 18px;
   }
 
   .toggle {
@@ -16,10 +21,7 @@ export const TodoElems = styled.li`
     height: 30px;
     opacity: 0.5;
     border-radius: 25px;
-  }
-  .img {
-    width: 18px;
-    height: 18px;
+    cursor: pointer;
   }
 
   .delete {
@@ -30,12 +32,13 @@ export const TodoElems = styled.li`
     height: 40px;
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: ${props => props.theme.colors.whiteBg};
     transition: color 0.2s ease-out;
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.whiteBg};
     border: none;
     cursor: pointer;
   }
+  
   .delete:hover {
     color: #da9090;
   }
@@ -50,19 +53,12 @@ export const TodoElems = styled.li`
     padding: 16px 16px 16px 60px;
     border: none;
     margin-bottom: 1px;
-  }
+    /* text-decoration: ${props => props.isCompleted ? 'line-through' : 'none'}; */
 
-  .taskComplited {
-    width: 100%;
-    font-family: roboto;
-    display: block;
-    font-size: 24px;
-    font-weight: 400;
-    padding: 16px 16px 16px 60px;
-    border: none;
-    margin-bottom: 1px;
-    text-decoration: line-through;
-    color:#d9d9d9;
+    ${props => props.isCompleted && css`
+      text-decoration: line-through;
+      color:#d9d9d9;
+    `}
   }
 
   input:focus{

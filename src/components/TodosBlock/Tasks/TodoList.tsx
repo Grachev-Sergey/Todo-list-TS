@@ -1,13 +1,11 @@
-import { useSelector } from 'react-redux';
-import filteredTodos from '../../../redux/selectors';
-import { StoreType } from '../../../redux/store';
-import { TodoListContainer } from './todoListStyles';
-import TodoElem from './todoElem/TodoElem';
+import filteredTodos from '../../../store/selectors';
+import { useAppSelector } from '../../../utils/hooks/typedHooks';
+import { TodoListContainer } from './TodoList.styles';
+import TodoElem from './TodoElem';
 
 
 function TodoList() {
-
-  const state = useSelector((state: StoreType) => state.todos);
+  const state = useAppSelector((state) => state.todos);
   const todos = filteredTodos(state);
 
   return (

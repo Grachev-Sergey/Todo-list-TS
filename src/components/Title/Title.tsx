@@ -1,4 +1,4 @@
-import { TitleContainer } from './titleStyles'
+import { TitleContainer } from './Title.styles';
 
 function Title() {
   return (

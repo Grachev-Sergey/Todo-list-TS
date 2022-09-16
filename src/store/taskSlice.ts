@@ -1,39 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-interface Itasks {
-  id: string
-  value: string
-  complited?: boolean
+export interface Itasks {
+  id: string;
+  value: string;
+  complited?: boolean;
 }
 
-interface IinitialStateType {
-  tasks: Itasks[]
-  filter: string
+export interface IinitialStateType {
+  tasks: Itasks[];
+  filter: string;
 }
 
 const initialState: IinitialStateType = {
   tasks: [],
-  filter: 'all',
+  filter: '',
 }
 
-type addTaskTextType = {
-  todoText: string
-} 
-
-type changeTextType = {
-  id: string
-  value: string
+type ChangeTextType = {
+  id: string;
+  value: string;
 }
 
 export const tasksSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<addTaskTextType>) => {
+    addTask: (state, action: PayloadAction<string>) => {
       const newTask: Itasks = {
         id: new Date().toISOString(),
-        value: action.payload.todoText,
+        value: action.payload,
       }
       state.tasks = [newTask, ...state.tasks]
     },
@@ -49,7 +44,7 @@ export const tasksSlice = createSlice({
         };
       });
     },
-    changingArrow: (state) => {
+    changingStatusAllTodos: (state) => {
       const isEverySelected = state.tasks.every((elem) => elem.complited);
       state.tasks = state.tasks.map(
         todo => {
@@ -63,7 +58,7 @@ export const tasksSlice = createSlice({
     leaveActiveTasks: (state) => {
       state.tasks = state.tasks.filter(todo => !todo.complited)
     },
-    changeText: (state, action: PayloadAction<changeTextType>) => {
+    changeText: (state, action: PayloadAction<ChangeTextType>) => {
       state.tasks = state.tasks.map(todo => {
         if (todo.id !== action.payload.id) return todo;
         return {
@@ -82,7 +77,7 @@ export const {
   addTask,
   deleteTask,
   switchStatus,
-  changingArrow,
+  changingStatusAllTodos,
   leaveActiveTasks,
   changeText,
   changeFilter,
@@ -90,4 +85,4 @@ export const {
 
 export default tasksSlice.reducer
 
-export type {IinitialStateType, Itasks}
+

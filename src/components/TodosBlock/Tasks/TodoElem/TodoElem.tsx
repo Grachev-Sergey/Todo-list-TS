@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteTask, switchStatus, changeText } from '../../../../redux/taskSlice';
-import { Itasks } from '../../../../redux/taskSlice';
-import { TodoElems } from './todoElemStyles'
-import checkMark from '../../../../imgs/checkMark.png';
+import { useAppDispatch } from '../../../../utils/hooks/typedHooks';
+import { deleteTask, switchStatus, changeText } from '../../../../store/taskSlice';
+import { Itasks } from '../../../../store/taskSlice';
+import { TodoElems } from './todoElemStyles';
+import checkMark from '../../../../assets/checkMark.png';
 
 function TodoElem(props: Itasks) {
   const [focus, setFocus] = useState(false);
   const [newText, setNewText] = useState(props.value);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const removeTodo = () => {
     dispatch(
@@ -38,7 +38,7 @@ function TodoElem(props: Itasks) {
     }
   };
 
-  const blure = (elem: React.ChangeEvent<HTMLInputElement>) => {
+  const HandlerBlureEvent = (elem: React.ChangeEvent<HTMLInputElement>) => {
     setNewText(elem.target.value);
     setFocus(false);
     dispatch(
@@ -50,29 +50,28 @@ function TodoElem(props: Itasks) {
   };
 
   return (
-    <TodoElems>
+    <TodoElems isCompleted={!!props.complited}>
       <button
         className="toggle"
         onClick={switchTodoCompleted}
-      >
+      >{props.complited && 
         <img
-          src={checkMark}
-          alt='CheckMark'
-          className={props.complited ? "img" : "hide"}
-        />
+        src={checkMark}
+        alt='CheckMark'
+      />}
       </button>
       {!focus ?
       <div 
-        className={props.complited ? "taskComplited" : "task"}
+        className="task"
         onDoubleClick={() => {setFocus(true)}}
       >
       {props.value}
       </div>
       : <input
-        className={props.complited ? "taskComplited" : "task"}
+        className="task"
         defaultValue={props.value}
         onChange={changeValue}
-        onBlur={blure}
+        onBlur={HandlerBlureEvent}
         onKeyDown={saveChanges}
       />}
       <button

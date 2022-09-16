@@ -1,13 +1,11 @@
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { leaveActiveTasks } from '../../../redux/taskSlice';
-import { StoreType } from '../../../redux/store';
-import { Footer } from './filtersAmdCounterStyles'
-import Filters from './filters/Filters';
+import { leaveActiveTasks } from '../../../store/taskSlice';
+import { useAppSelector, useAppDispatch } from '../../../utils/hooks/typedHooks';
+import { Footer } from './FiltersAmdCounter.styles';
+import Filters from './Filters';
 
 function FiltersAndCounter () {
-  const todos = useSelector((state:StoreType) => state.todos.tasks);
-  const dispatch = useDispatch();
+  const todos = useAppSelector((state) => state.todos.tasks);
+  const dispatch = useAppDispatch();
 
   const clearComplited = () => dispatch(leaveActiveTasks());
 
@@ -22,7 +20,6 @@ function FiltersAndCounter () {
       </span>
       <Filters/>
       <button
-        className="button"
         onClick={clearComplited}
       >
         Clear complited

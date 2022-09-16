@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { IinitialStateType } from './taskSlice'
+import { IinitialStateType } from './taskSlice';
 
 const todos = (state: IinitialStateType) => state.tasks;
 const status = (state: IinitialStateType) => state.filter;
@@ -7,9 +7,9 @@ const status = (state: IinitialStateType) => state.filter;
 const filteredTodos = createSelector(
   [todos, status],
   (todos, filter) => {
-    if (filter === 'all') return todos;
+    if (filter === 'all' || filter === '') return todos;
     return todos.filter(i => {
-      if (filter === 'completed') {
+      if (filter === 'complited') {
         return i.complited;
       }
       return !i.complited;

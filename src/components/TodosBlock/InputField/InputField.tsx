@@ -1,25 +1,23 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask, changingArrow } from '../../../redux/taskSlice';
-import { InputFieldContainer } from './inputFieldStyles'
-import arrow from '../../../imgs/arrowDown.png';
+import { useAppDispatch } from '../../../utils/hooks/typedHooks';
+import { addTask, changingStatusAllTodos } from '../../../store/taskSlice';
+import { InputFieldContainer } from './InputField.styles';
+import arrow from '../../../assets/arrowDown.png';
 
 function InputField() {
   const [text, setText] = useState(''); 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const createTodoElem = (event: React.FormEvent) => {
+  const createTodoElem = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!text.trim()) return;
     dispatch(
-      addTask({
-        todoText: text,
-      })
+      addTask(text)
     );
     setText('');
   };
   
-  const changingStateArrow = () => dispatch(changingArrow());
+  const changingStatus = () => dispatch(changingStatusAllTodos());
 
   const changeText = (elem: React.ChangeEvent<HTMLInputElement>) => {
     setText(elem.target.value);
@@ -28,19 +26,16 @@ function InputField() {
   return (
     <InputFieldContainer>
       <button
-        className="button"
-        onClick={changingStateArrow}
+        onClick={changingStatus}
       >
         <img
           src={arrow}
           alt="arrow"
-          className="img"
         />
       </button>
       <form onSubmit={createTodoElem}>
         <input
           type="text"
-          className="input"
           placeholder="What needs to be done?"
           value={text}
           onChange={changeText}
