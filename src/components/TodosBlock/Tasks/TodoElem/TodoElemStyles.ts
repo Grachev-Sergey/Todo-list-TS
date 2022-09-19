@@ -7,7 +7,7 @@ type StylesProps = {
 export const TodoElems = styled.li<StylesProps>`
 
   position: relative;
-  background-color: ${props => props.theme.colors.whiteBg};
+  background-color: ${({ theme }) => theme.colors.whiteBg};
 
   img {
     width: 18px;
@@ -32,9 +32,9 @@ export const TodoElems = styled.li<StylesProps>`
     height: 40px;
     font-size: 20px;
     font-weight: 600;
-    color: ${props => props.theme.colors.whiteBg};
+    color: ${({ theme }) => theme.colors.whiteBg};
     transition: color 0.2s ease-out;
-    background-color: ${props => props.theme.colors.whiteBg};
+    background-color: ${({ theme }) => theme.colors.whiteBg};
     border: none;
     cursor: pointer;
   }
@@ -53,7 +53,6 @@ export const TodoElems = styled.li<StylesProps>`
     padding: 16px 16px 16px 60px;
     border: none;
     margin-bottom: 1px;
-    /* text-decoration: ${props => props.isCompleted ? 'line-through' : 'none'}; */
 
     ${props => props.isCompleted && css`
       text-decoration: line-through;

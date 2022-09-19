@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAppDispatch } from '../../../../utils/hooks/typedHooks';
 import { deleteTask, switchStatus, changeText } from '../../../../store/taskSlice';
 import { Itasks } from '../../../../store/taskSlice';
-import { TodoElems } from './todoElemStyles';
+import { TodoElems } from './TodoElemStyles';
 import checkMark from '../../../../assets/checkMark.png';
 
 function TodoElem(props: Itasks) {
@@ -10,35 +10,35 @@ function TodoElem(props: Itasks) {
   const [newText, setNewText] = useState(props.value);
   const dispatch = useAppDispatch();
 
-  const removeTodo = () => {
+  const handlerRemoveTodo = () => {
     dispatch(
       deleteTask(props.id)
     );
   };
 
-  const switchTodoCompleted = () => {
+  const handlerSwitchTodoStatus = () => {
     dispatch(
       switchStatus(props.id)
     );
   };
 
-  const changeValue = (elem: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerChangeValue = (elem: React.ChangeEvent<HTMLInputElement>) => {
     setNewText(elem.target.value);
   };
 
-  const saveChanges = (event: React.KeyboardEvent<HTMLElement>) => {
+  const handlerSaveChanges = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
       setFocus(false);
       dispatch(
         changeText({
           id: props.id,
-          value: newText
+          value: newText,
         })
       );
     }
   };
 
-  const HandlerBlureEvent = (elem: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerBlure = (elem: React.ChangeEvent<HTMLInputElement>) => {
     setNewText(elem.target.value);
     setFocus(false);
     dispatch(
@@ -53,11 +53,11 @@ function TodoElem(props: Itasks) {
     <TodoElems isCompleted={!!props.complited}>
       <button
         className="toggle"
-        onClick={switchTodoCompleted}
+        onClick={handlerSwitchTodoStatus}
       >{props.complited && 
         <img
         src={checkMark}
-        alt='CheckMark'
+        alt="button to mark the completion of todo"
       />}
       </button>
       {!focus ?
@@ -70,13 +70,13 @@ function TodoElem(props: Itasks) {
       : <input
         className="task"
         defaultValue={props.value}
-        onChange={changeValue}
-        onBlur={HandlerBlureEvent}
-        onKeyDown={saveChanges}
+        onChange={handlerChangeValue}
+        onBlur={handlerBlure}
+        onKeyDown={handlerSaveChanges}
       />}
       <button
         className="delete"
-        onClick={removeTodo}
+        onClick={handlerRemoveTodo}
       >
       x
       </button>

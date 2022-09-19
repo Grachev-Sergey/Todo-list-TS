@@ -3,10 +3,8 @@ import { useAppSelector } from '../../../utils/hooks/typedHooks';
 import { TodoListContainer } from './TodoList.styles';
 import TodoElem from './TodoElem';
 
-
 function TodoList() {
-  const state = useAppSelector((state) => state.todos);
-  const todos = filteredTodos(state);
+  const todos = useAppSelector(filteredTodos);
 
   return (
     <TodoListContainer>

@@ -7,9 +7,12 @@ function FiltersAndCounter () {
   const todos = useAppSelector((state) => state.todos.tasks);
   const dispatch = useAppDispatch();
 
-  const clearComplited = () => dispatch(leaveActiveTasks());
+  const complitedTodos = todos.map(todo => todo.complited);
 
-  let numActiveTodos = todos.filter(todo => !todo.complited);
+  const handlerClearComplited = () => dispatch(leaveActiveTasks());
+
+  const numActiveTodos = todos.filter(todo => !todo.complited);
+
 
   return (
     <Footer>
@@ -19,11 +22,14 @@ function FiltersAndCounter () {
         left
       </span>
       <Filters/>
-      <button
-        onClick={clearComplited}
+      {!complitedTodos.includes(true) ?
+      <div className='plug'></div>
+      :<button
+      onClick={handlerClearComplited}
       >
-        Clear complited
+      Clear complited
       </button>
+      }
     </Footer>
   );
 };

@@ -8,7 +8,7 @@ function InputField() {
   const [text, setText] = useState(''); 
   const dispatch = useAppDispatch();
 
-  const createTodoElem = (event: React.FormEvent<HTMLFormElement>) => {
+  const handlerCreateTodoElem = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!text.trim()) return;
     dispatch(
@@ -17,7 +17,7 @@ function InputField() {
     setText('');
   };
   
-  const changingStatus = () => dispatch(changingStatusAllTodos());
+  const handlerChangingStatus = () => dispatch(changingStatusAllTodos());
 
   const changeText = (elem: React.ChangeEvent<HTMLInputElement>) => {
     setText(elem.target.value);
@@ -26,14 +26,14 @@ function InputField() {
   return (
     <InputFieldContainer>
       <button
-        onClick={changingStatus}
+        onClick={handlerChangingStatus}
       >
         <img
           src={arrow}
-          alt="arrow"
+          alt="button to mark the completion of all todos"
         />
       </button>
-      <form onSubmit={createTodoElem}>
+      <form onSubmit={handlerCreateTodoElem}>
         <input
           type="text"
           placeholder="What needs to be done?"

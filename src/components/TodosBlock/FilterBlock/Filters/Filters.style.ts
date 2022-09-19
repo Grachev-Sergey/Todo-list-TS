@@ -17,8 +17,8 @@ export const FiltresContainer = styled.div<StylesProps>`
 
   .button {
     border: none;
-    color: ${props => props.theme.colors.gray};
-    background-color: ${props => props.theme.colors.whiteBg};
+    color: ${({ theme }) => theme.colors.gray};
+    background-color: ${({ theme }) => theme.colors.whiteBg};
     font-size: 15px;
     cursor: pointer;
   }
@@ -45,7 +45,7 @@ export const FiltresContainer = styled.div<StylesProps>`
     margin-right: 15px;
   }
 
-  @media only screen and (${props => props.theme.media.small}) {
+  @media only screen and (${({ theme }) => theme.media.small}) {
     display: block;
     margin: 5px auto;
   }

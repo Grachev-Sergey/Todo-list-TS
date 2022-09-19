@@ -32,9 +32,11 @@ export const tasksSlice = createSlice({
       }
       state.tasks = [newTask, ...state.tasks]
     },
+
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter(todo => todo.id !== action.payload);
     },
+
     switchStatus: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.map(todo => {
         if (todo.id !== action.payload) return todo;
@@ -44,6 +46,7 @@ export const tasksSlice = createSlice({
         };
       });
     },
+
     changingStatusAllTodos: (state) => {
       const isEverySelected = state.tasks.every((elem) => elem.complited);
       state.tasks = state.tasks.map(
@@ -55,9 +58,11 @@ export const tasksSlice = createSlice({
         }
       );
     },
+
     leaveActiveTasks: (state) => {
       state.tasks = state.tasks.filter(todo => !todo.complited)
     },
+
     changeText: (state, action: PayloadAction<ChangeTextType>) => {
       state.tasks = state.tasks.map(todo => {
         if (todo.id !== action.payload.id) return todo;
@@ -67,6 +72,7 @@ export const tasksSlice = createSlice({
         };
       });
     },
+    
     changeFilter: (state, action: PayloadAction<string>) => {
       state.filter = action.payload;
     },

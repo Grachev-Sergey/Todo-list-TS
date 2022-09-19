@@ -1,8 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { IinitialStateType } from './taskSlice';
+import { RootState } from ".";
 
-const todos = (state: IinitialStateType) => state.tasks;
-const status = (state: IinitialStateType) => state.filter;
+const todos = (state: RootState) => state.todos.tasks;
+const status = (state: RootState) => state.todos.filter;
 
 const filteredTodos = createSelector(
   [todos, status],

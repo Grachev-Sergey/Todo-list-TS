@@ -6,19 +6,19 @@ function Filters () {
   const filter = useAppSelector((state) => state.todos.filter);
   const dispatch = useAppDispatch();
 
-  const allTodo = () => {
+  const handlerSelectionAllTodo = () => {
     dispatch(
       changeFilter('all')
     );
   };
 
-  const activeTodo = () => {
+  const handlerSelectionActiveTodo = () => {
     dispatch(
       changeFilter('active')
     );
   };
 
-  const complitedTodo = () => {
+  const handlerSelectionComplitedTodo = () => {
     dispatch(
       changeFilter('complited')
     );
@@ -28,19 +28,19 @@ function Filters () {
     <FiltresContainer filter={filter}>
       <button 
         className="button all"
-        onClick={allTodo}
+        onClick={handlerSelectionAllTodo}
       >
         All
       </button>
       <button 
         className="button active"
-        onClick={activeTodo}
+        onClick={handlerSelectionActiveTodo}
       >
         Active
       </button>
       <button 
         className="button complited"
-        onClick={complitedTodo}
+        onClick={handlerSelectionComplitedTodo}
       >
         Complited
       </button>
